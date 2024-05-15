@@ -1,0 +1,57 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+body {
+  background: radial-gradient(
+    4000px circle at 60.39% 42.44%,
+    #1b1234 0%,
+    #17023b 100%
+  );
+}
+
+ul {
+  list-style-type: none;
+}
+.fade-in {
+  opacity: 1;
+  transition: all 0.5s ease-in-out;
+}
+
+.app {
+  opacity: 0;
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.image-container img {
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.image-container:hover img {
+  filter: grayscale(100%);
+}
+
+.image-container .overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.image-container:hover .overlay {
+  opacity: 1;
+}
+
+.image-container:hover {
+  cursor: pointer;
+}
