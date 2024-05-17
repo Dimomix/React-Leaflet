@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar.jsx";
 import Hero from "../components/Hero.jsx";
 import Features from "../components/Features.jsx";
 import Packages from "../components/Packages.jsx";
-import About from "../components/About.jsx";
+import Info from "../components/Info.jsx";
 import Testimonials from "../components/Testimonial.jsx";
 import CTA from "../components/CTA.jsx";
 import Footer from "../components/Footer.jsx";
@@ -13,6 +13,7 @@ import reviews from "../data.js";
 
 import "../index.css";
 import MyButton from "../components/MyButton.jsx";
+import InfoKarta from "../components/InfoKarta.jsx";
 
 function Home() {
   return (
@@ -29,26 +30,16 @@ function Home() {
           <Features />
         </Fade>
       </Element>
-      <Element name="packages">
-        <Fade>
-          <Packages />
-        </Fade>
-      </Element>
-      <Element name="about">
-        <Fade>
-          <About />
-        </Fade>
-      </Element>
-        <Element name="about">
-        <Fade>
-          <MyButton />
-        </Fade>
-      </Element>
-      <Element name="testimonials">
-        <Fade>
-          <Testimonials reviews={reviews} />
-        </Fade>
-      </Element>
+        <Element className="info">
+            <Fade>
+                <Info/>
+            </Fade>
+        </Element>
+        <Element className="infokarta">
+            <Fade>
+                <InfoKarta/>
+            </Fade>
+        </Element>
       <Element name="cta">
         <Fade>
           <CTA />

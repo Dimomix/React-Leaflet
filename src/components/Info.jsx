@@ -1,17 +1,16 @@
 import React from "react";
-import Crypto from "../assets/Crypto.png";
-import People from "../assets/karta.png";
 import Tilt from "react-parallax-tilt";
-import '../index.css'
+import crypto from "../assets/Crypto.png"; // замените на актуальное изображение для вашего проекта
+import '../index.css';
 
-const About = () => {
+const Info = () => {
   return (
       <div>
         <section className="dark:text-gray-100">
           <div className="container max-w-xl p-6 py-11 mx-auto space-y-24 lg:px-8 lg:max-w-7xl">
-            <div>
+            <div style={{marginBottom: '-100px', paddingTop: '50px'}}>
               <h2 className="text-3xl font-bold tracking-tight text-center sm:text-5xl dark:text-gray-50">
-                How it works
+                Как это работает
               </h2>
             </div>
             <div className="grid lg:gap-8 lg:grid-cols-2 lg:items-center">
@@ -39,14 +38,10 @@ const About = () => {
                     </div>
                     <div className="ml-4">
                       <h4 className="text-lg font-medium leading-6 dark:text-gray-50">
-                        Check in
+                        Уведомления
                       </h4>
                       <p className="mt-2 dark:text-gray-400">
-                        Our check-in process ensures that your journey with us
-                        begins smoothly and seamlessly. Whether you're a new or
-                        returning user, we prioritize your experience, providing
-                        you with the necessary tools and support to get started or
-                        continue your cryptocurrency mining journey effortlessly.
+                        Получайте уведомления в реальном времени о важных событиях и изменениях в статусе вашего GPS трекера. Будьте в курсе каждого перемещения и возможных отклонений от маршрута.
                       </p>
                     </div>
                   </div>
@@ -74,13 +69,10 @@ const About = () => {
                     </div>
                     <div className="ml-4">
                       <h4 className="text-lg font-medium leading-6 dark:text-gray-50">
-                        Mining
+                        Мониторинг
                       </h4>
                       <p className="mt-2 dark:text-gray-400">
-                        We utilize cutting-edge technology to engage in the
-                        process of mining cryptocurrencies. Our approach ensures
-                        efficiency and reliability, providing a seamless
-                        experience for our users.
+                        Система отслеживания позволяет наблюдать за движением вашего GPS трекера в реальном времени. Наши технологии обеспечивают точность и надежность данных.
                       </p>
                     </div>
                   </div>
@@ -108,13 +100,10 @@ const About = () => {
                     </div>
                     <div className="ml-4">
                       <h4 className="text-lg font-medium leading-6 dark:text-gray-50">
-                        We get profit
+                        Аналитика
                       </h4>
                       <p className="mt-2 dark:text-gray-400">
-                        Our mining operations yield profitable returns for our
-                        investors. We employ a strategic approach, leveraging the
-                        latest technologies to optimize profitability and minimize
-                        risks.
+                        С помощью аналитических данных вы можете оптимизировать свои маршруты и улучшить эффективность работы. Мы предоставляем подробные отчеты и полезные рекомендации.
                       </p>
                     </div>
                   </div>
@@ -123,74 +112,11 @@ const About = () => {
               <div aria-hidden="true" className="mt-10 lg:mt-0">
                 <Tilt>
                   <img
-                      src={Crypto}
-                      alt="Crypto-1"
+                      src={crypto}
+                      alt="GPS Tracking"
                       className="mx-auto rounded-lg"
                   />
                 </Tilt>
-              </div>
-            </div>
-            <div>
-              <div className="grid lg:gap-8 lg:grid-cols-2 lg:items-center">
-                <div className="lg:col-start-2">
-                  <h3 className="text-2xl font-bold tracking-tight sm:text-3xl dark:text-gray-50">
-                    Наши технологии
-                  </h3>
-                  <p className="mt-3 text-lg dark:text-gray-400">
-                    Мы обеспечиваем безопасность и наилучшее обслуживание
-                  </p>
-                  <div className="mt-12 space-y-12">
-                    <div className="flex">
-                      <div className="ml-4">
-                        <h4 className="text-lg font-medium leading-6 dark:text-gray-50">
-                          Современное оборудование
-                        </h4>
-                        <p className="mt-2 dark:text-gray-400">
-                          We utilize state-of-the-art mining rigs and equipment,
-                          ensuring optimal performance and efficiency in
-                          cryptocurrency mining.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex">
-                      <div className="ml-4">
-                        <h4 className="text-lg font-medium leading-6 dark:text-gray-50">
-                          Advanced Software Solution
-                        </h4>
-                        <p className="mt-2 dark:text-gray-400">
-                          Our custom-developed software solutions streamline the
-                          mining process, enhancing control, monitoring, and
-                          overall productivity
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex">
-                      <div className="ml-4">
-                        <h4 className="text-lg font-medium leading-6 dark:text-gray-50">
-                          Innovative Security Measures
-                        </h4>
-                        <p className="mt-2 dark:text-gray-400">
-                          We implement robust security protocols and encryption
-                          technologies to safeguard your assets and data,
-                          providing you with peace of mind throughout your mining
-                          journey.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="mt-10 lg:mt-0 lg:col-start-1 lg:row-start-1 image-container">
-                  <Tilt>
-                    <a href="/">
-                    <img
-                        src={People}
-                        alt="Crypto-2"
-                        className="mx-auto rounded-lg"
-                    />
-                    <div className="overlay">ПЕРЕЙТИ</div>
-                    </a>
-                  </Tilt>
-                </div>
               </div>
             </div>
           </div>
@@ -199,4 +125,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Info;

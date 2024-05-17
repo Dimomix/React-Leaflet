@@ -1,0 +1,45 @@
+.leafletHome {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 1300px;
+  margin: 30px auto;
+  text-align: center;
+
+}
+
+.leafletHomeh1 {
+  color: #007bff;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.leafletHome nav {
+  margin-bottom: 20px;
+}
+
+.leafletHome nav a {
+  color: #A44FF4;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+.leafletHome nav a:hover {
+  text-decoration: underline;
+}
+
+.leafletHome button {
+  background-color: #9333EA;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.leafletHome button:hover {
+  background-color: #4a0d4a;
+}

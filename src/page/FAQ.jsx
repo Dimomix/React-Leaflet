@@ -5,50 +5,40 @@ import Navbar from "../components/Navbar.jsx";
 import Hero from "../components/Hero.jsx";
 import Features from "../components/Features.jsx";
 import Packages from "../components/Packages.jsx";
-import About from "../components/About.jsx";
+import Info from "../components/Info.jsx";
 import Testimonials from "../components/Testimonial.jsx";
 import CTA from "../components/CTA.jsx";
 import Footer from "../components/Footer.jsx";
 import reviews from "../data.js";
 
 import "../index.css";
+import HeroTreker from "../components/HeroTreker.jsx";
+import InfoTreker from "../components/InfoTreker.jsx";
+import HeroAbout from "../components/HeroAbout.jsx";
+import InfoFAQ from "../components/InfoFAQ.jsx";
+import InfoFAQ2 from "../components/InfoFAQ2.jsx";
 
 function App() {
     return (
         <>
             <Navbar />
 
-            <Element className="home">
+            <Element name="home">
                 <Fade>
-                    <Hero />
+                    <HeroAbout />
                 </Fade>
             </Element>
-            <Element className="features">
+            <Element name="about">
                 <Fade>
-                    <Features />
+                    <InfoFAQ />
                 </Fade>
             </Element>
-            <Element className="packages">
+            <Element name="about">
                 <Fade>
-                    <Packages />
+                    <InfoFAQ2 />
                 </Fade>
             </Element>
-            <Element className="about">
-                <Fade>
-                    <About />
-                </Fade>
-            </Element>
-            <Element className="testimonials">
-                <Fade>
-                    <Testimonials reviews={reviews} />
-                </Fade>
-            </Element>
-            <Element className="cta">
-                <Fade>
-                    <CTA />
-                </Fade>
-            </Element>
-            <Element className="footer">
+            <Element name="footer">
                 <Fade>
                     <Footer />
                 </Fade>

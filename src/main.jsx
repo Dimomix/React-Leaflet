@@ -6,41 +6,43 @@ import {
     createBrowserRouter,
     RouterProvider,
     Navigate
-} from "react-router-dom";
-import AboutUs from "./page/AboutUs.jsx";
-import Treker from "./page/Treker.jsx";
-import FAQ from "./page/FAQ.jsx";
-import {AuthProvider} from "./context/AuthContext.jsx";
-import LoginPage from "./page/LoginPage.jsx";
+} from 'react-router-dom';
+import AboutUs from './page/AboutUs.jsx';
+import Treker from './page/Treker.jsx';
+import FAQ from './page/FAQ.jsx';
+import { AuthProvider } from './context/AuthContext.jsx';
+import LoginPage from './page/LoginPage.jsx';
+import LeafletHome from './leaflet/LeafletHome.jsx';
+import { AddPetForm } from './leaflet/LeafletComponents/add-pet-form.jsx';
 
 const router = createBrowserRouter([
     {
-        path: "/",
+        path: '/',
         element: <Home />,
     },
     {
-        path: "/about",
+        path: '/about',
         element: <AboutUs />
     },
     {
-        path: "/treker",
+        path: '/treker',
         element: <Treker />
     },
     {
-        path: "/faq",
+        path: '/faq',
         element: <FAQ />
     },
     {
-        path: "/login",
+        path: '/login',
         element: <LoginPage />
     },
-    // {
-    //     path: "/Map",
-    //     element: <MapComponent />
-    // },
     {
-        path: "*",
-        element: <Navigate to="/" replace />
+        path: '/leaflet-home/*',  // Добавить /* к пути
+        element: <LeafletHome />
+    },
+    {
+        path: '*',
+        element: <Navigate to='/' replace />
     }
 ]);
 
@@ -49,6 +51,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <AuthProvider>
             <RouterProvider router={router} />
         </AuthProvider>
-    </React.StrictMode>,
+    </React.StrictMode>
 );
-

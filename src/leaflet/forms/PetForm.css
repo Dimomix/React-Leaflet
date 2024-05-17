@@ -1,0 +1,58 @@
+/* PetForm.css */
+
+.pet-form {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.pet-form .form-group {
+    margin-bottom: 15px;
+}
+
+.pet-form .form-label {
+    font-weight: bold;
+    color: #333;
+}
+
+.pet-form .form-control {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.pet-form .form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+}
+
+.pet-form .form-control::placeholder {
+    color: #6c757d;
+    opacity: 1;
+}
+
+.pet-form .form-control:disabled {
+    background-color: #e9ecef;
+    opacity: 1;
+}
+
+.pet-form .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.pet-form .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+.pet-form .btn-primary:focus {
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+}

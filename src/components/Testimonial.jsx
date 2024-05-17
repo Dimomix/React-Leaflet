@@ -2,6 +2,7 @@ import React from "react";
 import Card from "./Card";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { useState } from "react";
+import {SlArrowLeft, SlArrowRight} from "react-icons/sl";
 
 const Testimonials = (props) => {
   let reviews = props.reviews;
@@ -29,25 +30,25 @@ const Testimonials = (props) => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center mt-10">
-      <div className="w-full md:max-w-[700px] p-10 transition-all duration-700 hover:shadow-xl rounded-md">
-        <h2 className="text-3xl font-bold tracking-tight text-center sm:text-5xl dark:text-gray-50">
-          Reviews
-        </h2>
+    <div className="flex flex-col items-center justify-center mt-10" style={{paddingBottom: '30px'}}>
+      <div className="w-full md:max-w-[700px] p-10 transition-all duration-700 hover:shadow-xl rounded-md" style={{border: "solid #A44FF4 10px"}}>
+        {/*<h2 className="text-3xl font-bold tracking-tight text-center sm:text-5xl dark:text-gray-50">*/}
+        {/*  Команда*/}
+        {/*</h2>*/}
         <div className="relative">
           <Card review={reviews[index]} />
           <div className="hidden md:block absolute inset-0 items-center justify-center">
             <button
               onClick={leftShiftHandler}
-              className="absolute left-0 top-1/2 transform -translate-y-1/2 cursor-pointer hover:text-violet-500"
+              className="absolute left-[-30px] top-1/2 transform -translate-y-1/2 cursor-pointer hover:text-violet-500"
             >
-              <FiChevronLeft />
+              <SlArrowLeft className="text-white text-3xl font-bold" />
             </button>
             <button
               onClick={rightShiftHandler}
-              className="absolute right-0 top-1/2 transform -translate-y-1/2 cursor-pointer hover:text-violet-500"
+              className="absolute right-[-30px] top-1/2 transform -translate-y-1/2 cursor-pointer hover:text-violet-500"
             >
-              <FiChevronRight />
+              <SlArrowRight className="text-white text-3xl font-bold"/>
             </button>
           </div>
         </div>

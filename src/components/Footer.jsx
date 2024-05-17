@@ -9,7 +9,7 @@ const Footer = () => {
             <div className="pb-6 col-span-full md:pb-0 md:col-span-6">
               <a
                 rel="noopener noreferrer"
-                href="#"
+                href="/"
                 className="flex justify-center space-x-3 md:justify-start"
               >
                 <div className="flex items-center justify-center w-12 h-12 rounded-full dark:bg-violet-400">
@@ -23,7 +23,7 @@ const Footer = () => {
                   </svg>
                 </div>
                 <span className="self-center text-2xl font-semibold">
-                  Smart Hashes
+                  Умный трекер
                 </span>
               </a>
             </div>
@@ -33,46 +33,46 @@ const Footer = () => {
                 <li>
                   <a
                     rel="noopener noreferrer"
-                    href="#"
+                    href="/"
                     className="hover:dark:text-violet-400"
                   >
-                    Packages
+                    Home
                   </a>
                 </li>
                 <li>
                   <a
                     rel="noopener noreferrer"
-                    href="#"
+                    href="/about"
                     className="hover:dark:text-violet-400"
                   >
-                    Referal Programs
+                    About Us
                   </a>
                 </li>
                 <li>
                   <a
                     rel="noopener noreferrer"
-                    href="#"
+                    href="/treker"
                     className="hover:dark:text-violet-400"
                   >
-                    Equipment
+                    Treker
                   </a>
                 </li>
                 <li>
                   <a
                     rel="noopener noreferrer"
-                    href="#"
-                    className="hover:dark:text-violet-400"
-                  >
-                    About us
-                  </a>
-                </li>
-                <li>
-                  <a
-                    rel="noopener noreferrer"
-                    href="#"
+                    href="/faq"
                     className="hover:dark:text-violet-400"
                   >
                     FAQ
+                  </a>
+                </li>
+                <li>
+                  <a
+                      rel="noopener noreferrer"
+                      href="/leaflet-home/"
+                      className="hover:dark:text-violet-400"
+                  >
+                    Map
                   </a>
                 </li>
               </ul>

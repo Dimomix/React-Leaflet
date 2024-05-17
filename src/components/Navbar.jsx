@@ -61,6 +61,15 @@ const Navbar = () => {
                   FAQ
                 </a>
               </li>
+              <li className="flex">
+                <a
+                    rel="noopener noreferrer"
+                    href="/leaflet-home/"
+                    className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent hover:dark:text-violet-400 hover:dark:border-violet-400 transition duration-150 ease-out hover:ease-in"
+                >
+                  Map
+                </a>
+              </li>
             </ul>
             <div className="items-center flex-shrink-0 hidden lg:flex">
               {auth ? (
