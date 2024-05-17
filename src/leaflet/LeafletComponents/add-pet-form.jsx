@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { PetForm } from '../forms/pet-form.jsx';
 import { AddPetMap } from './add-pet-map.jsx';
 import { LeafletContainer } from './leaflet-container.jsx';
-import { saveAs } from 'file-saver';
-import { addZone } from './../local-storage/store';
 
 export const AddPetForm = () => {
     const [markers, setMarkers] = useState([]);
@@ -14,21 +12,30 @@ export const AddPetForm = () => {
         setMarkers((prevMarkers) => [...prevMarkers, newMarker]);
     };
 
-    const onSubmit = (pet) => {
+    const onSubmit = async (pet) => {
         if (markers.length < 1) return;
-        const newPet = { ...pet, coordinates: markers };
-        console.log('New Pet Data:', newPet);
-        navigate('../');
-    };
+        const newPet = { ...pet, coordinates: markers.map(marker => ({ lat: marker.lat, lng: marker.lng })) };
 
-    const createZone = () => {
-        const zoneData = {
-            markers: markers,
-            zoneColor: 'purple'
-        };
-        addZone(zoneData);
-        const blob = new Blob([JSON.stringify(zoneData, null, 2)], { type: 'application/json' });
-        saveAs(blob, 'zoneData.json');
+        try {
+            const response = await fetch('http://localhost:8000/create-polygon_n/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newPet),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorData.detail}`);
+            }
+
+            const data = await response.json();
+            console.log('Server response:', data);
+            navigate('../');
+        } catch (error) {
+            console.error('Error submitting data:', error);
+        }
     };
 
     return (
@@ -38,7 +45,7 @@ export const AddPetForm = () => {
                 <AddPetMap markers={markers} onAddMarker={onAddMarker} />
             </LeafletContainer>
             {markers.length >= 3 && (
-                <button onClick={createZone}>Создать зону</button>
+                <button onClick={() => onSubmit({ name: '', description: '', avatar: '' })}>Создать зону</button>
             )}
         </div>
     );
