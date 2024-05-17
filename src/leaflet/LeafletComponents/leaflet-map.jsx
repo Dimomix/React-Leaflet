@@ -1,14 +1,16 @@
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
-import { Marker, Popup, Polygon, useMap } from 'react-leaflet';
+import {Marker, Popup, Polygon, useMap} from 'react-leaflet';
 import useGeoLocation from './geo-location-hook';
 import useUserDefaultLocation from './user-default-location-hook';
-import { useEffect, useState } from 'react';
-import { getPets, getZones } from './../local-storage/store';
+import {useEffect, useState} from 'react';
+import {getPets, getZones} from './../local-storage/store';
 import L from 'leaflet';
+import './leaflet-container.css'; // Импортируйте ваш файл стилей
+
 
 export const LeafletMap = () => {
-    const { position } = useGeoLocation();
-    const { userLocation } = useUserDefaultLocation(position);
+    const {position} = useGeoLocation();
+    const {userLocation} = useUserDefaultLocation(position);
     const pets = getPets();
     const [zones, setZones] = useState([]);
 
@@ -65,7 +67,7 @@ export const LeafletMap = () => {
                 return (
                     <Marker key={i} icon={icon} position={p.coordinates}>
                         <Popup>
-                            <img src={p.avatar} className="pet-popup-img" />
+                            <img src={p.avatar} className="pet-popup-img"/>
                             <div>Name: <h4>{p.name}</h4></div>
                             <p>{p.description}</p>
                         </Popup>
@@ -73,7 +75,7 @@ export const LeafletMap = () => {
                 );
             })}
             {zones.map((zone, index) => (
-                <Polygon key={index} positions={zone.markers} pathOptions={{ color: zone.zoneColor }}>
+                <Polygon key={index} positions={zone.markers} pathOptions={{color: zone.zoneColor}}>
                     <Popup>
                         <div>Name: <h4>{zone.name}</h4></div>
                         <p>{zone.description}</p>

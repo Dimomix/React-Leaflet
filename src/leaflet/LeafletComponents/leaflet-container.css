@@ -2,3 +2,7 @@
     height: 500px;
     border: #A44FF4 solid 5px;
 }
+
+.leaflet-container {
+    cursor: default !important;
+}
