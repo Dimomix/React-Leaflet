@@ -1,8 +1,8 @@
-import React from "react";
-import useAuth from "../hook/useAuth.js";
+import React from 'react';
+import {useAuth} from '/src/hooks/useAuth';
 
 const Navbar = () => {
-  const { auth, setAuth } = useAuth(); // Используем хук useAuth
+  const { user, logout } = useAuth(); // Используем хук useAuth для получения статуса аутентификации и функции выхода
 
   return (
       <div className="sticky top-0 z-50 backdrop-filter backdrop-blur-md">
@@ -72,25 +72,22 @@ const Navbar = () => {
               </li>
             </ul>
             <div className="items-center flex-shrink-0 hidden lg:flex">
-              {auth ? (
+              {user ? (
                   <button
-                      onClick={() => setAuth(false)}
+                      onClick={logout}
                       type="button"
                       className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                   >
                     Log out
                   </button>
-              )
-              :
-                (
-                <button
-                  onClick={() => setAuth(true)}
-                  type="button"
-                  className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-                >
-                  Log in
-                </button>
-                )}
+              ) : (
+                  <a
+                      href="/login"
+                      className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                  >
+                    Log in
+                  </a>
+              )}
             </div>
             <button className="p-4 lg:hidden">
               <svg
