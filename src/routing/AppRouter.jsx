@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { RouterProvider } from 'react-router-dom';
+import { useAuthContext } from '../context/AuthContext';
 import { privateRoute, publicRoute } from './router.jsx';
 
 const AppRouter = () => {
-    const [user, setUser] = useState(false);
-    return user ? <RouterProvider router={privateRoute} /> : <RouterProvider router={publicRoute} />;
+    const { user } = useAuthContext();
+    const router = user ? privateRoute : publicRoute;
+
+    return <RouterProvider router={router} />;
 };
 
 export default AppRouter;

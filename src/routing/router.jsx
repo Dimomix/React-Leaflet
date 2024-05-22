@@ -1,4 +1,3 @@
-// router.jsx
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import AboutUs from "../page/AboutUs";
 import Treker from "../page/Treker";
@@ -7,6 +6,7 @@ import LeafletHome from "../leaflet/LeafletHome";
 import Home from "../page/Home";
 import LoginForm from "../page/Authorization/LoginForm";
 import RegisterForm from "../page/Authorization/RegisterForm";
+import AccountSettings from "@/page/Profile/AccountSettings.jsx";
 
 export const privateRoute = createBrowserRouter([
     {
@@ -28,6 +28,10 @@ export const privateRoute = createBrowserRouter([
     {
         path: '/leaflet-home/*',  // Добавить /* к пути
         element: <LeafletHome />
+    },
+    {
+        path: '/profile',  // Добавить /* к пути
+        element: <AccountSettings />
     },
     {
         path: '*',

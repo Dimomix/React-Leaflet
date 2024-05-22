@@ -1,19 +1,19 @@
 // components/RegisterForm.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '/src/hooks/useAuth';
+import { useAuthContext } from '/src/context/AuthContext';
 import styles from './RegisterForm.module.scss';
 
 const RegisterForm = () => {
-    const { register } = useAuth();
-    const [username, setUsername] = useState('');
+    const { register } = useAuthContext();
     const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        register(email, username, password);
+        register(email, username, password, navigate);
     };
 
     return (

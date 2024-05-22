@@ -1,18 +1,17 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useContext } from 'react';
+import useAuth from '../hooks/useAuth';
 
-// Создаем контекст
 const AuthContext = createContext();
 
-// Создаем провайдер контекста
 export const AuthProvider = ({ children }) => {
-    const [auth, setAuth] = useState(true);
-
+    const auth = useAuth();
     return (
-        <AuthContext.Provider value={{ auth, setAuth }}>
+        <AuthContext.Provider value={auth}>
             {children}
         </AuthContext.Provider>
     );
 };
 
-// Экспортируем контекст, если это необходимо
-export default AuthContext;
+export const useAuthContext = () => {
+    return useContext(AuthContext);
+};

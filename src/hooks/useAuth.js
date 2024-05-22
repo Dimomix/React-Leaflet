@@ -1,30 +1,31 @@
-// hooks/useAuth.js
+// useAuth.js
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
-export const useAuth = () => {
-    const [user, setUser] = useState(null);
-    const navigate = useNavigate();
+const useAuth = () => {
+    const [user, setUser] = useState(() => {
+        const token = localStorage.getItem('access');
+        return token ? true : false;
+    });
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('access');
         if (token) {
             // Вы можете добавить логику для проверки токена на сервере
             setUser(true);
         }
     }, []);
 
-    const login = async (email, password) => {
+    const login = async (username, password, navigate) => {
         const response = await fetch('http://127.0.0.1:8000/api/token/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ email, password }),
+            body: JSON.stringify({ username, password }),
         });
 
         const data = await response.json();
-        if ([data.access, data.refresh]) {
+        if (data.access && data.refresh) {
             localStorage.setItem('access', data.access);
             localStorage.setItem('refresh', data.refresh);
             setUser(true);
@@ -34,7 +35,7 @@ export const useAuth = () => {
         }
     };
 
-    const register = async (email, username, password) => {
+    const register = async (email, username, password, navigate) => {
         const response = await fetch('http://127.0.0.1:8000/api/register/', {
             method: 'POST',
             headers: {
@@ -44,7 +45,7 @@ export const useAuth = () => {
         });
 
         const data = await response.json();
-        if ([data.access, data.refresh]) {
+        if (data.access && data.refresh) {
             localStorage.setItem('access', data.access);
             localStorage.setItem('refresh', data.refresh);
             setUser(true);
@@ -55,10 +56,12 @@ export const useAuth = () => {
     };
 
     const logout = () => {
-        localStorage.removeItem('token');
+        localStorage.removeItem('access');
+        localStorage.removeItem('refresh');
         setUser(false);
-        navigate('/login');
     };
 
     return { user, login, register, logout };
 };
+
+export default useAuth;

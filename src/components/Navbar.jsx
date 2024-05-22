@@ -1,8 +1,11 @@
+// components/Navbar.jsx
 import React from 'react';
-import {useAuth} from '/src/hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../context/AuthContext';
 
 const Navbar = () => {
-  const { user, logout } = useAuth(); // Используем хук useAuth для получения статуса аутентификации и функции выхода
+  const { user, logout } = useAuthContext();
+  const navigate = useNavigate();
 
   return (
       <div className="sticky top-0 z-50 backdrop-filter backdrop-blur-md">
@@ -70,11 +73,20 @@ const Navbar = () => {
                   Map
                 </a>
               </li>
+              <li className="flex">
+                <a
+                    rel="noopener noreferrer"
+                    href="/profile"
+                    className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent hover:dark:text-violet-400 hover:dark:border-violet-400 transition duration-150 ease-out hover:ease-in"
+                >
+                  Profile
+                </a>
+              </li>
             </ul>
             <div className="items-center flex-shrink-0 hidden lg:flex">
               {user ? (
                   <button
-                      onClick={logout}
+                      onClick={() => logout()}
                       type="button"
                       className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                   >

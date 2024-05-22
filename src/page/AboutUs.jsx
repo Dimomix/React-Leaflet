@@ -4,10 +4,8 @@ import {Fade} from "react-reveal";
 import Navbar from "../components/Navbar.jsx";
 import HeroAbout from "../components/HeroAbout.jsx";
 import Features from "../components/Features.jsx";
-import Packages from "../components/Packages.jsx";
 import Info from "../components/Info.jsx";
 import Testimonials from "../components/Testimonial.jsx";
-import CTA from "../components/CTA.jsx";
 import Footer from "../components/Footer.jsx";
 import reviews from "../data.js";
 
