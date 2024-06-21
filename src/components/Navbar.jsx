@@ -52,7 +52,7 @@ const Navbar = () => {
                     href="/treker"
                     className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent hover:dark:text-violet-400 hover:dark:border-violet-400 transition duration-150 ease-out hover:ease-in"
                 >
-                  Treker
+                  Tracker
                 </a>
               </li>
               <li className="flex">
@@ -67,19 +67,19 @@ const Navbar = () => {
               <li className="flex">
                 <a
                     rel="noopener noreferrer"
-                    href="/leaflet-home/"
+                    href="/profile"
                     className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent hover:dark:text-violet-400 hover:dark:border-violet-400 transition duration-150 ease-out hover:ease-in"
                 >
-                  Map
+                  Profile
                 </a>
               </li>
               <li className="flex">
                 <a
                     rel="noopener noreferrer"
-                    href="/profile"
+                    href="/leaflet-home/"
                     className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent hover:dark:text-violet-400 hover:dark:border-violet-400 transition duration-150 ease-out hover:ease-in"
                 >
-                  Profile
+                  Map
                 </a>
               </li>
             </ul>

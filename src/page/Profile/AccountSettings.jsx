@@ -4,15 +4,41 @@ import AccountForm from "@/page/Profile/AccountForm.jsx";
 import Trackers from "@/page/Profile/Trackers.jsx";
 import AddTracker from "@/page/Profile/AddTracker.jsx";
 import Navbar from "@/components/Navbar.jsx";
+import { useAuthContext } from '/src/context/AuthContext.jsx';
 
 const AccountSettings = () => {
+    const { user } = useAuthContext();
     const [activeTab, setActiveTab] = useState('account');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
 
     useEffect(() => {
         const savedTab = localStorage.getItem('activeTab');
         if (savedTab) {
             setActiveTab(savedTab);
         }
+
+        const fetchProfile = async () => {
+            try {
+                const response = await fetch('http://127.0.0.1:8000/api/userprofile/', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('access')}`
+                    }
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    setFirstName(data.name);
+                    setLastName(data.surname);
+                } else {
+                    throw new Error('Failed to fetch profile');
+                }
+            } catch (error) {
+                console.error('Error fetching profile:', error);
+            }
+        };
+
+        fetchProfile();
     }, []);
 
     const handleTabClick = (tab) => {
@@ -20,29 +46,34 @@ const AccountSettings = () => {
         localStorage.setItem('activeTab', tab);
     };
 
+    const handleProfileUpdate = (newFirstName, newLastName) => {
+        setFirstName(newFirstName);
+        setLastName(newLastName);
+    };
+
     const renderContent = () => {
         switch (activeTab) {
             case 'account':
-                return <AccountForm />;
+                return <AccountForm onUpdate={handleProfileUpdate} />;
             case 'trackers':
                 return <Trackers />;
             case 'add-tracker':
                 return <AddTracker />;
             default:
-                return <AccountForm />;
+                return <AccountForm onUpdate={handleProfileUpdate} />;
         }
     };
 
     return (
         <>
-            <div style={{ borderBottom: '5px solid #c659f7', borderRadius: '3%' }}>
+            <div className={styles.navbar}>
                 <Navbar />
             </div>
             <div className={styles.container}>
                 <div className={styles.sidebar}>
                     <div className={styles.profile}>
-                        <img src="" alt="Profile" className={styles.profileImage} />
-                        <h2>Kiran Acharya</h2>
+                        <img src="/src/assets/user.png" alt="Profile" className={styles.profileImage} />
+                        <h2>{firstName}</h2>
                     </div>
                     <nav>
                         <ul>
@@ -50,19 +81,19 @@ const AccountSettings = () => {
                                 className={activeTab === 'account' ? styles.active : ''}
                                 onClick={() => handleTabClick('account')}
                             >
-                                Аканут
+                                Аккаунт
                             </li>
                             <li
                                 className={activeTab === 'trackers' ? styles.active : ''}
                                 onClick={() => handleTabClick('trackers')}
                             >
-                                Трейкеры
+                                Трекеры
                             </li>
                             <li
                                 className={activeTab === 'add-tracker' ? styles.active : ''}
                                 onClick={() => handleTabClick('add-tracker')}
                             >
-                                Добавить трейкер
+                                Добавить трекер
                             </li>
                         </ul>
                     </nav>

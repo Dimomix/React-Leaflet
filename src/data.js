@@ -17,7 +17,7 @@ const reviews = [
     id: 3,
     name: "Mukazhanov N.K.",
     job: "Professor",
-    image: "src/assets/Agai.jpeg",
+    image: "src/assets/user.png",
     text: "Моя цель как научного руководителя – направлять студентов, поддерживать их в исследовательской деятельности и способствовать развитию их профессиональных навыков.",
   }
 ];

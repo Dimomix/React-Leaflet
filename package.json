@@ -13,6 +13,7 @@
     "@emotion/react": "^11.11.4",
     "@react-login-page/page8": "^1.0.4",
     "axios": "^1.6.8",
+    "bootstrap": "^5.3.3",
     "file-saver": "^2.0.5",
     "firebase": "^10.11.1",
     "framer-motion": "^11.0.20",
@@ -32,7 +33,9 @@
     "react-parallax-tilt": "^1.7.217",
     "react-reveal": "^1.2.2",
     "react-router-dom": "^6.23.1",
-    "react-scroll": "^1.9.0"
+    "react-scroll": "^1.9.0",
+    "react-select": "^5.8.0",
+    "styled-components": "^6.1.11"
   },
   "devDependencies": {
     "@types/react": "^18.2.64",

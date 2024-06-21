@@ -1,26 +1,93 @@
-import React, {useState} from "react";
-import styles from "@/page/Profile/AccountSettings.module.scss";
-import Navbar from "@/components/Navbar.jsx";
-import {Element} from "react-scroll";
-import {Fade} from "react-reveal";
+import React, { useState, useEffect } from "react";
+import styles from "./AccountForm.module.scss"; // Импорт нового файла стилей
+import { useAuthContext } from '/src/context/AuthContext.jsx';
 
-const AccountForm = () => {
-    const [firstName, setFirstName] = useState('Kiran');
-    const [lastName, setLastName] = useState('Acharya');
-    const [email, setEmail] = useState('kiranacharya287@gmail.com');
-    const [phoneNumber, setPhoneNumber] = useState('+91 9876543215');
+const AccountForm = ({ onUpdate }) => {
+    const { user } = useAuthContext();
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
+    const [success, setSuccess] = useState(false);
+
+    useEffect(() => {
+        const fetchProfile = async () => {
+            try {
+                const response = await fetch('http://127.0.0.1:8000/api/userprofile/', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('access')}`
+                    }
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    setFirstName(data.name);
+                    setLastName(data.surname);
+                    setPhoneNumber(data.phone);
+                } else {
+                    throw new Error('Failed to fetch profile');
+                }
+            } catch (error) {
+                console.error('Error fetching profile:', error);
+            }
+        };
+
+        fetchProfile();
+    }, []);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setError(null);
+        setSuccess(false);
+        setIsLoading(true);
+
+        const updatedProfile = {
+            name: firstName,
+            surname: lastName,
+            phone: phoneNumber
+        };
+
+        try {
+            const response = await fetch('http://127.0.0.1:8000/api/userprofile/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('access')}`
+                },
+                body: JSON.stringify(updatedProfile)
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                setSuccess(true);
+                setTimeout(() => setSuccess(false), 5000);
+                onUpdate(firstName, lastName);
+            } else {
+                const errorText = await response.text();
+                console.error('Error response:', errorText);
+                setError('Что-то пошло не так');
+                setTimeout(() => setError(null), 5000);
+            }
+        } catch (error) {
+            console.error('Error updating profile:', error);
+            setError('Что-то пошло не так');
+            setTimeout(() => setError(null), 5000);
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     return (
         <>
             <div>
-                <h2>Account Settings</h2>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className={styles.row}>
                         <div className={styles.formGroup}>
                             <label>First Name</label>
                             <input
                                 type="text"
-                                value={firstName}
+                                value={firstName ? firstName : ''}
                                 onChange={(e) => setFirstName(e.target.value)}
                             />
                         </div>
@@ -30,26 +97,29 @@ const AccountForm = () => {
                             <label>Last Name</label>
                             <input
                                 type="text"
-                                value={lastName}
+                                value={lastName ? lastName : ''}
                                 onChange={(e) => setLastName(e.target.value)}
                             />
                         </div>
                     </div>
                     <div className={styles.row}>
                         <div className={styles.formGroup}>
-                            <label>Phone number</label>
+                            <label>Phone Number</label>
                             <input
                                 type="tel"
-                                value={phoneNumber}
+                                value={phoneNumber ? phoneNumber : ''}
                                 onChange={(e) => setPhoneNumber(e.target.value)}
                             />
                         </div>
                     </div>
                     <div className={styles.buttons}>
-                        <button type="submit">Update</button>
-                        <button type="button">Cancel</button>
+                        <button type="submit" disabled={isLoading}>
+                            {isLoading ? 'Загрузка...' : 'Update'}
+                        </button>
                     </div>
                 </form>
+                {error && <div className={styles.alertError}>{error}</div>}
+                {success && <div className={styles.alertSuccess}>Профиль успешно обновлен!</div>}
             </div>
         </>
     );

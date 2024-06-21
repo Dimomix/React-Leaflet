@@ -1,0 +1,51 @@
+.dropdownContainer {
+  position: relative;
+  display: flex;
+  justify-content: flex-end; /* Переместить контейнер вправо */
+  padding: 20px;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdownButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background-color: #1E3A8A;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.buttonText {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 120%;
+  right: 0; /* Привязать меню к правой стороне кнопки */
+  width: 200px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 9999; /* Высокий z-index, чтобы элементы были поверх всего */
+  overflow: hidden;
+  border-radius: 8px;
+  transform-origin: top right; /* Точка преобразования */
+}
+
+.dropdownOption {
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dropdownOption:hover {
+  background-color: #E0E7FF;
+}

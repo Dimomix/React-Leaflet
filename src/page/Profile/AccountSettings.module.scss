@@ -2,29 +2,38 @@
   display: flex;
   margin: 20px auto;
   background-color: #fff;
-  width: 100%; /* Исправлено с 800vh на 100% */
-  max-width: 1200px;
-  height: 30vw;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  flex-direction: column;
+  width: 80vw;
+  height: 70vh;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  //border: 5px solid #fff;
 
-  @media (min-width: 768px) {
+  @media (min-width: 900px) {
     flex-direction: row;
+  }
+
+  @media (min-height: 1000px) {
+    height: 65vh;
   }
 }
 
+.navbar {
+  border-bottom: 5px solid #c659f7;
+  border-radius: 0 0 3% 3%;
+}
+
 .sidebar {
-  width: 100%;
-  border-bottom: 1px solid #ccc;
+  width: 250px;
+  border-right: 1px solid #ccc;
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #b4e0ff;
 
   @media (min-width: 768px) {
     width: 250px;
-    border-right: 1px solid #ccc;
-    border-bottom: none;
   }
 }
 
@@ -46,28 +55,41 @@ nav ul {
 }
 
 nav li {
-  padding: 10px 0;
+  padding: 15px 0;
   text-align: center;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 5px;
+}
+
+nav li:hover {
+  color: #64bcff;
+  background-color: #FFFFFF;
+  border: #64bcff solid 1px;
+  border-radius: 10%;
 }
 
 .active {
   font-weight: bold;
-  color: blue;
+  color: #fff;
+  background-color: #75c5ff;
+  border: #fff solid 1px;
+  border-radius: 10%;
 }
 
 .formContainer {
   flex-grow: 1;
   padding: 20px;
-  width: 100%;
-  position: relative;
+  border: #fff solid 5px;
+  background-color: #b4e0ff;
+  //border-radius: 5%;
 }
 
 .row {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  align-items: center; /* Центрирование по вертикали */
+  align-items: center;
   margin-bottom: 20px;
 }
 
@@ -77,7 +99,6 @@ nav li {
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Центрирование по горизонтали */
 
   &:last-child {
     margin-right: 0;
@@ -97,13 +118,15 @@ nav li {
   border-radius: 4px;
 }
 
+.textarea {
+  resize: none;
+  overflow: hidden;
+}
+
 .buttons {
   display: flex;
   justify-content: flex-end;
   margin-top: 20px;
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
 }
 
 .buttons button {
@@ -112,7 +135,7 @@ nav li {
 }
 
 .imgContainer {
-  border: 1px solid #000;
+  border: 1px solid #ccc;
   border-radius: 10px;
   padding: 20px;
   display: flex;
@@ -122,12 +145,13 @@ nav li {
 }
 
 .card {
-  border: 1px solid #000;
+  border: 1px solid #ccc;
   padding: 20px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 100%;
+  max-width: 300px;
   margin: 0 auto;
 }
 
@@ -149,4 +173,47 @@ nav li {
 .description {
   padding: 20px;
   text-align: center;
+}
+
+.selectorType {
+  min-width: 100%;
+  flex: 1;
+  margin-right: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.selectorType label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.alertError,
+.alertSuccess {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  z-index: 1000;
+}
+
+.alertError {
+  background-color: red;
+}
+
+.alertSuccess {
+  background-color: green;
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  color: #000;
 }

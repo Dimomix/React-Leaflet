@@ -10,7 +10,6 @@ const useAuth = () => {
     useEffect(() => {
         const token = localStorage.getItem('access');
         if (token) {
-            // Вы можете добавить логику для проверки токена на сервере
             setUser(true);
         }
     }, []);
@@ -62,6 +61,6 @@ const useAuth = () => {
     };
 
     return { user, login, register, logout };
-};
+    };
 
 export default useAuth;
